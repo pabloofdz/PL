@@ -1,0 +1,33 @@
+PRÁCTICA 1 PL
+--------------------
+Autor: Pablo Fernández Pérez (pablo.fperez@udc.es)
+
+En esta primera práctica de Procesamiento de Lenguajes se ha llevado a cabo la implementación mediante FLEX de un analizador estadístico de textos básico.
+
+Información proporcionada y peculiaridades:
+Dado un fichero de texto de entrada se muestra información sobre el mismo:
+- Número total de caracteres que lo componen: 
+    No se cuentan los espacios en blanco ni los tabuladores. Además es necesario destacar que en el caso de las vocales con tilde ('á', 'é', 'í', 'ó', 'ú'), así como en el de la 'ñ', se contarán dos caracteres (tanto en mayúscula como en minúscula).
+- Número total de palabras: 
+    Se consideran palabras a las secuencias de caracteres que no posean ni espacios ni tabuladores.
+- Número de palabras en mayúscula: 
+    Todos los caracteres deben estar en mayúsula.
+- Número de palabras en minúscula: 
+    Todos los caracteres deben estar en minúscula.
+- Número de palabras numéricas:
+    Todos los caracteres deben ser dígitos.
+- Otras palabras:
+    Aquí se incluye también el número de palabras que no encajan en ninguna de las categorías anteriores. Esto incluye tanto palabras raras (como la cadena "a2ki?-)7"), como palabras que usan mayúsculas y minúsculas (como "Hola").
+- Número de frases:
+    En esta práctica se ha definido a una frase como "secuencia de palabras finalizadas por '.'". En esta implementación se ha optado por contar una frase cada vez que se encuentra una palabra acabada en '.'. Esto tiene como desventaja que no se detecten frases si existen espacios entre la palabra y el punto, pero he llegado a la conclusión de que es la mejor opción dado que una frase correctamente escrita debería finalizar con una palabra seguida de '.' (sin espacios en el medio) y además así se evita el problema de que puedan existir frases sin palabras o que, por ejemplo, en el caso de utilizar los puntos suspensivos, "...", se cuenten tres frases (esto en el caso de haber optado por contar una frase cada vez que se encuentra un punto).
+  
+Desarrollo:
+Se ha creado un archivo practica1.l.
+En la sección de declaraciones se ha añadido código en C en el que se declaran las variables para los distintos contadores requeridos, así como los pares nombre-definición con las expresiones regulares necesarias para el correcto análisis del texto.
+En la sección de reglas se establecen las distintas acciones cuando la entrada coincida con las distintas expresiones regulares. Estas acciones consisten básicamente en la actualización de los distintos contadores, exceptuando el caso de los espacios en blanco, en el que se indica que no se haga nada.
+Finalmente, en la sección de código se declara el método main que invoca al analizador léxico yylex y se encarga también de imprimir por pantalla la información obtenida del análisis.
+
+Funcionamiento:
+A continuación se explica como se puede probar el funcionamiento del analizador:
+Se puede hacer "make" y ejecutar ("./practica1"), o directamente hacer "make run2", de forma que podremos introducir texto por teclado y analizarlo cuando hayamos terminado haciendo CTRL+D.
+Se puede hacer "make" y "./practica1 < fichero.txt", o directamente hacer "make run", para analizar un fichero ".txt". En el segundo caso deberemos modificar el Makefile para indicar el fichero que queremos analizar.
