@@ -1,0 +1,24 @@
+PRÁCTICA 2 PL
+--------------------
+Autor: Pablo Fernández Pérez (pablo.fperez@udc.es)
+
+En esta segunda práctica de Procesamiento de Lenguajes se ha llevado a cabo el diseño e implementación de un validador de la sintaxis de un fichero XML mediante FLEX y BISON.
+
+Funcionamiento:
+El analizador recibirá como entrada un fichero XML y devolverá como salida el resultado de la validación. 
+- Si el fichero cumple con el formato XML se indicará que es correcto y en otro caso se mostrará que el fichero no es correcto y el número de línea en el que se ha detectado el error, mostrándose
+información sobre el tipo de error producido. El validador terminará su análisis al encontrar el primer error.
+- En esta práctica se ha optado por dar información del tipo de error en los siguientes casos:
+  + Cuando la cabecera no aparece, no aparece al principio o es incorrecta. Es necesario destacar que para que sea válida debe incluir tanto la versión como el encoding. Se ha optado por no restringir demasiado el valor que puede tomar el encoding debido a que existen muchas posibilidades, pero si se desea se podría modificar fácilmente, cambiando en la expresión regular del encoding en el fichero .l el {id} por las distintas cadenas correspondientes a los posibles encodings. Quedaría algo similar a esto: encoding  "encoding"=\"("UTF-8"|"utf-8"|"ISO-8859-1"|"iso-8859-1")\"
+  + Cuando dentro de un comentario se encuentra "--".
+  + Cuando no existe un elemento raíz del que desciendan todos los demás.
+  + Cuando se encuentra texto que no está entre tags.
+  + Cuando se encuentra un caracter inesperado. Por ejemplo, saltará este error si incluimos '<' o '&' (si no forma parte de una entidad como por ejemplo "&lt;") en el texto entre tags.
+  + Cuando el tag de cierre no coincide con el de apertura.
+  + Cuando falta el tag de apertura. Solo se señala para el tag de apertura del elemento raíz, ya que en el resto de casos saltará el error anterior.
+  + Cuando falta un tag de cierre. De nuevo, en algunos casos saltará el error de que el tag de cierre no coincide con el de apertura. Es necesario aclarar que para detectar correctamente este error en todos los casos, se ha añadido un token ENDOFFILE para detectar estos casos, lo que ha obligado a añadir en el fichero practica2.l una acción cuando se encuentra <<EOF>> que hace que se devuelva el token la primera vez que se encuentra y 0 las siguientes, dado que, de no hacer esto se obtiene un syntax error después de recibir el mensaje de que la sintaxis xml es correcta.
+
+A continuación se explica como se puede probar el funcionamiento del validador:
+Haciendo "make" se validará el documento ".xml" indicado en el Makefile. "make run" y "make run2" sirven para lo mismo. Una vez creado el ejecutable, el mismo efecto se puede lograr haciendo "./practica2 < documento.xml" o "./practica2 documento.xml"
+
+Se ha creado un archivo practica2.l que incluye las expresiones regulares necesarias y las acciones tomadas al coincidir la entrada con estas. También se ha creado un archivo practica2.y que incluye las reglas gramaticales con las distintas acciones, que pueden ser o bien informar de que la sintaxis XML es correcta o bien indicar un error. Para esto último el analizador sintáctico utiliza la función yyerror(s), que ha sido redefinida dentro del fichero para adaptarse a las necesidades del problema.
