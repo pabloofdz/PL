@@ -1,0 +1,8 @@
+historia
+  titulo -Aventura en el Bosque Encantado-
+    capitulo -Capítulo 1 : Eligiendo el camino-
+    "Te encuentras en el medio de un bosque misterioso."
+    eleccion "¿Qué camino eliges?"
+      opcion 1 "Tomar el sendero izquierdo"
+      opcion 2 "Seguir el sendero derecho" aventura12.txt
+fin

@@ -1,0 +1,5 @@
+historia
+    capitulo -Capítulo 2: Final-
+    "Te sientas en mitad del camino y simplemente esperas. Los días pasan y sorprendentemente ningún animal te ataca. Finalmente terminas muriendo de sed."
+    "¿De verdad creías que esta era una buena opción?"
+fin

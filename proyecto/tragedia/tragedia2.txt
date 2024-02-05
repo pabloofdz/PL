@@ -1,0 +1,8 @@
+historia
+    capitulo -Capítulo 2: El portal-
+    "Decides tomar el camino de la derecha y llegas hasta un misterioso portal mágico."
+    "Podrías entrar o pasar de él y continuar avanzando."
+    eleccion "¿Entras en el portal?"
+      opcion 1 "Sí" tragedia/tragedia21.txt
+      opcion 2 "No" tragedia/tragedia22.txt
+fin

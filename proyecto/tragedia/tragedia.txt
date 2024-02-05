@@ -1,0 +1,9 @@
+historia
+  titulo -Tragedia en el bosque-
+    capitulo -Capítulo 1: Eligiendo el camino-
+    "Te encuentras perdido en un bosque en medio de la noche. Avanzas por un camino de tierra hasta que llegas a una bifurcación."
+    eleccion "¿Qué camino eliges?"
+      opcion 1 "Tomar el sendero izquierdo" tragedia/tragedia1.txt
+      opcion 2 "Seguir el sendero derecho" tragedia/tragedia2.txt
+      opcion 3 "No hacer nada" tragedia/tragedia3.txt
+fin

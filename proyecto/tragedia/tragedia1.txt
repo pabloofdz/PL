@@ -1,0 +1,7 @@
+historia
+    capitulo -Capítulo 2: El manantial-
+    "Decides tomar el camino de la izquierda y de repente, ves un manantial con agua de un tono verdoso. Estás sediento."
+    eleccion "¿Bebes del agua?"
+      opcion 1 "Sí" tragedia/tragedia11.txt
+      opcion 2 "No" tragedia/tragedia12.txt
+fin

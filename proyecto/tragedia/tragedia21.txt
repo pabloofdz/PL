@@ -1,0 +1,4 @@
+historia
+    capitulo -Capítulo 3: Final-
+    "Entras en el portal, desintegrándote al instante."
+fin

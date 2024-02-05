@@ -1,0 +1,7 @@
+historia
+    capitulo -Capítulo 3: El oso-
+    "Decides evitar el portal y continuas avanzando. Después de dos horas caminando te encuentras con un oso en el medio del camino. Estás aterrorizado."
+    eleccion "¿Qué haces?"
+      opcion 1 "Te armas de valor y te enfrentas al oso con tus propios puños." tragedia/tragedia221.txt
+      opcion 2 "Escapas del oso como buenamente puedes." tragedia/tragedia222.txt
+fin

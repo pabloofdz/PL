@@ -1,0 +1,4 @@
+historia
+    capitulo -Capítulo 3: Final-
+    "Decides no beber del manantial. Como llevabas cinco días sin beber, te desmayas para no volver a despertar."
+fin

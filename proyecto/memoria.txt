@@ -1,0 +1,43 @@
+MEMORIA PROYECTO PL
+--------------------
+Autores: Pablo Fernández Pérez (pablo.fperez@udc.es)
+         Diego Suárez Ramos (diego.suarez.ramos@udc.es)
+
+Se ha desarrollado un generador de historias interactivas en formato texto, permitiendo a los usuarios crear narrativas con múltiples opciones y caminos. La herramienta realiza el análisis léxico y sintáctico de las historias que se le pasan mediante archivos .txt, manejando los posibles errores en el formato y generarando una salida ejecutable por consola para que los usuarios interactúen con las historias.
+Cada historia esta formado por N ficheros. El formato de cada fichero es el siguiente:
+
+historia
+  titulo -texto_titulo-
+    capitulo -texto_capitulo-
+    "texto_1"
+    "texto_N"
+    eleccion "texto_eleccion"
+      opcion 1 "texto_opcion" fichero_1.txt
+      opcion 2 "texto_opcion" fichero_2.txt
+      opcion N "texto_opcion" fichero_N.txt
+fin
+
+En cada opcion se indica el fichero en el que continua la historia.
+Tanto el título como el capítulo son opcionales.
+También es opcional la elección acompañada de opciones, puesto que no aparece si únicamente hay un fichero o si este es el ultimo de la historia.
+
+Hemos contemplado los siguientes errores:
+- Que un fichero no empiece con "historia". (make run4)
+- Que un fichero no termine con "fin". (make run3)
+- Que un fichero con opciones no tenga una elección. (make run9)
+- Que un fichero con una elección no tenga opciones. (make run5)
+- Que un fichero con una elección tenga únicamente una opción. (make run2)
+- Que el título no tenga texto. (make run8)
+- Que el capítulo no tenga texto. (make run6)
+- Que la eleccion no tenga texto. (make run7)
+- Que una opcion no tenga texto. (make run12)
+- Que una opcion no tenga un fichero asociado. (make run13)
+- Que haya opciones con números repetidos. (make run10)
+- Que alguno de los ficheros que forman la historia no exista. (make run11)
+
+Una vez analizado un fichero (que no sea el último de la historia) se pide al usuario que seleccione una opción. Se permite al usuario volvere a intentarlo si introduce valores inválidos. Se puede salir presionando 0.
+
+A continuación se explica como se puede probar el funcionamiento del generador de historias interactivas:
+Haciendo "make" se genera una historia interactiva por defecto, "tragedia.txt". "make run" sirve para lo mismo. Haciendo "make runN", siendo N un número entre 2 y 13 (incluídos), se pueden probar los distintos errores que se han contemplado. Una vez creado el ejecutable, se puede generar otra historia haciendo "./proyecto fichero.txt", siendo fichero.txt el fichero en el que empieza la historia.
+
+Se ha creado un archivo proyecto.l que incluye las expresiones regulares necesarias y las acciones tomadas al coincidir la entrada con estas. También se ha creado un archivo proyecto.y que incluye las reglas gramaticales con las distintas acciones, así como el código en C que permite la interacción con el usuario. Además, se ha implementado dos listas para poder imprimir por pantalla correctamente tanto el texto como las opciones.

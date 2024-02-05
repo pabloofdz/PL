@@ -1,0 +1,4 @@
+historia
+    capitulo -Capítulo 3: Final-
+    "Decides beber del manantial. El agua estaba plagada de bacterias, lo que era esperable debido a su color. Terminas falleciendo de una infección."
+fin

@@ -1,0 +1,4 @@
+historia
+    capitulo -Capítulo 4: Final-
+    "Intentas huir, con tan mala suerte que, probablemente debido al cansancio y el nerviosismo, tropiezas y te abres la cabeza contra una roca."
+fin

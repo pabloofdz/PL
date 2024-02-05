@@ -1,0 +1,6 @@
+historia
+  titulo -Elección errónea-
+    capitulo -Capítulo 1 : Cometiendo el error de tu vida-
+    "Conoces a una chica majísima, guapísima e inteligente."
+    eleccion "Elige una opción:"
+fin
